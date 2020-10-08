@@ -37,7 +37,8 @@ class Ball {
 
 
     //checks is the ball touches any of the obstructions 
-    for (int i=0; i<10; i++) {
+
+    /*for (int i=0; i<10; i++) {
       if (position.x + radius> obs[i].position.x  && 
         position.x + radius < obs[i].position.x+obs[i].w && 
         position.y + radius > obs[i].position.y && 
@@ -50,12 +51,16 @@ class Ball {
         position.x = width/2;
         position.y = height - radius;
       }
-    }
-    for(int i = 0; i<5; i++){
-    if (dist(position.x, position.y, lvlUpBall[i].position.x, lvlUpBall[i].position.y)< radius + radius - 10) {
-      position.x = width/2;
-      position.y = height - radius;
-    }
+    }*/
+
+
+
+
+    for (int i = 0; i<5; i++) {
+      if (dist(position.x, position.y, lvlUpBall.position.x, lvlUpBall.position.y)< radius + radius - 10) {
+        position.x = width/2;
+        position.y = height - radius;
+      }
     }
     finish();
   }
@@ -64,23 +69,22 @@ class Ball {
   void keyPressed() {
 
     //move farward
-    if (key == 'w') {
-
+    if (key == 'w' || key == 'W') {
       position.y = position.y - vel.y;
       ellipse(position.x, position.y, radius, radius);
     }
 
     // move backward 
-    else if (key == 's' ) {
+    else if (key == 's' || key == 'S') {
       position.y = position.y + vel.y;
       ellipse(position.x, position.y, radius, radius);
     }
     //turn left 
-    else if (key == 'a') {
+    else if (key == 'a' || key == 'A') {
       position.x = position.x - vel.x;
       ellipse(position.x, position.y, radius, radius);
       //turn right
-    } else if (key == 'd') {
+    } else if (key == 'd' || key == 'D') {
       position.x = position.x + vel.x;
       ellipse(position.x, position.y, radius, radius);
     }
@@ -90,7 +94,6 @@ class Ball {
     if (position.y < 0) {    
       position.x = width/2;
       position.y = height - radius;
-      scoreX = true;
     }
   }
 
@@ -131,6 +134,4 @@ class Ball {
     fill(212, 121, 113);
     text("Score:" + score, 20, height - 10);
   }
-
- 
 }  

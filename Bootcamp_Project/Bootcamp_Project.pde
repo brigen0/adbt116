@@ -6,7 +6,7 @@ Obstructions[] obs;
 Ball ball; 
 float dis;
 boolean collision;
-levelUpBall[] lvlUpBall;
+levelUpBall lvlUpBall;
 
 
 
@@ -18,15 +18,14 @@ void setup() {
   backgroundSound.play();
   backgroundSound.loop(); //keeps repeating the sound 
 
-  
-  
+
+
   obs = new Obstructions[10];
   ball = new Ball();
-  lvlUpBall = new levelUpBall[5];
-  
-  for (int i = 0; i<5; i++){
-    lvlUpBall[i] = new levelUpBall();
-  }
+  lvlUpBall = new levelUpBall();
+
+
+
 
   for (int i=0; i<10; i++) {
     obs[i] = new Obstructions();
@@ -38,7 +37,7 @@ void setup() {
 void draw() {
 
   background(255);
-  
+
   image(img, 0, 0);
   for (int i = 0; i < 10; i++) {
     obs[i].draw();
@@ -46,11 +45,9 @@ void draw() {
   ball.draw();
 
   //if the user score one point another obstruction comes its way
-  for(int i = 0; i<5; i++){
-    if (ball.score > i) {
-      lvlUpBall[i].draw();
-    }
-}  }
+
+  lvlUpBall.draw();
+}  
 
 void savedValues() {
 
